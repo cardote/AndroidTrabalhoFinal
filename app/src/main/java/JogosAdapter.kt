@@ -1,12 +1,16 @@
 import Models.Jogo
+import android.content.Context
 import android.support.v7.widget.RecyclerView.Adapter
 import android.support.v7.widget.RecyclerView
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import br.com.fiap.a31scj.crud.R
 
-class JogosAdapter(private val jogos: List<Jogo>) : Adapter<JogosAdapter.ViewHolder>() {
+class JogosAdapter(private val jogos: List<Jogo>,
+                   private val context: Context) : Adapter<JogosAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val view = LayoutInflater.from(context).inflate(R.layout.jogo_layout, parent, false)
     }
 
     override fun getItemCount(): Int {
@@ -14,10 +18,13 @@ class JogosAdapter(private val jogos: List<Jogo>) : Adapter<JogosAdapter.ViewHol
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val jogo = jogos[position]
+        holder.title.text = jogo.title
+        holder.description.text = jogo.description
     }
 
     class ViewHolder(itemView: View) : RecycleView.ViewHolder(itemView) {
-
+        val title = itemView.note_item_title
+        val description = itemView.note_item_description
     }
 }
