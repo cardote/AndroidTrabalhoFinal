@@ -1,4 +1,4 @@
 package Models
 
-class Jogo(val nome: String,
+class Jogo(val titulo: String,
            val descricao: String)
