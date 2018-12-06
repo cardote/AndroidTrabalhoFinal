@@ -5,6 +5,9 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_tela_principal.*
 import JogosAdapter
+import android.support.design.widget.Snackbar
+import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.StaggeredGridLayoutManager
 
 class TelaPrincipal : AppCompatActivity() {
@@ -16,8 +19,13 @@ class TelaPrincipal : AppCompatActivity() {
         val recycleView = jogo_recyclerview
         recycleView.adapter = JogosAdapter(jogos(), this)
 
-        val layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.HORIZONTAL)
-        recycleView.layoutManager = layoutManager
+        val layoutManager = GridLayoutManager(this, 1)
+        recycleView.layoutManager = layoutManager as RecyclerView.LayoutManager?
+
+        fab.setOnClickListener{
+            Snackbar.make(it, "Um click!", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show()
+        }
     }
 
     private fun jogos(): List<Jogo> {
