@@ -16,7 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TelaPrincipal"></activity>
+        <activity android:name=".TelaPrincipal" />
+        <activity android:name=".NovoJogo" />
+        <activity android:name=".EditarJogo"></activity>
     </application>
 
 </manifest>

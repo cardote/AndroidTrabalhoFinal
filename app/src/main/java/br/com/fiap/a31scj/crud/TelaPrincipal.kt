@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_tela_principal.*
 import JogosAdapter
+import android.content.Intent
 import android.support.design.widget.Snackbar
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -23,16 +24,16 @@ class TelaPrincipal : AppCompatActivity() {
         recycleView.layoutManager = layoutManager as RecyclerView.LayoutManager?
 
         fab.setOnClickListener{
-            Snackbar.make(it, "Um click!", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+            val intent = Intent(this, NovoJogo::class.java);
+            startActivity(intent);
         }
     }
 
     private fun jogos(): List<Jogo> {
         return listOf(
-                Jogo("Street Fighter II", "Da cabeçada!!!"),
-                Jogo("Megaman X", "Dando tiro pra todo lado"),
-                Jogo("Mortal Kombat III", "Clássico Foda")
+                Jogo("Street Fighter II", "Da cabeçada!!!", "1"),
+                Jogo("Megaman X", "Dando tiro pra todo lado", "2"),
+                Jogo("Mortal Kombat III", "Clássico Foda", "3")
         )
     }
 }

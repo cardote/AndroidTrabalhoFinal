@@ -16,15 +16,23 @@
             android:id="@+id/jogo_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="30dp"
+            android:textSize="30sp"
             tools:text="Nome" />
 
         <TextView
-            android:id="@+id/jogo_descricao"
+        android:id="@+id/jogo_descricao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        tools:text="Descrição" />
+
+        <TextView
+            android:id="@+id/jogo_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
-            tools:text="Descrição" />
+            android:textSize="10sp"
+            android:visibility="invisible"
+            tools:text="id" />
 
     </LinearLayout>
 

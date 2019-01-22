@@ -3,6 +3,7 @@ package br.com.fiap.a31scj.crud
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -23,7 +24,8 @@ class MainActivity : AppCompatActivity() {
 
         this.button.setOnClickListener {
             if (!this@MainActivity.login()) {
-                Toast.makeText(this, "Por favor, informe os dados de acesso!", Toast.LENGTH_LONG).show()
+                Snackbar.make(it, "Por favor, informe os dados de acesso!", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show()
             } else {
                 this@MainActivity.openView()
             }
