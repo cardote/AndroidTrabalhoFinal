@@ -56,7 +56,7 @@ class JogosAdapter(
             // Set valores
             title.text = jogo.titulo
             descricao.text = jogo.descricao
-            id.text = jogo.id
+            id.text = jogo._id
         }
     }
 
