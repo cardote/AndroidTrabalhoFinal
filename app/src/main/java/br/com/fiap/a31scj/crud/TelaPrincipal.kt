@@ -1,5 +1,6 @@
 package br.com.fiap.a31scj.crud
 
+import Config.RetrofitInit
 import Models.Jogo
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +11,10 @@ import android.support.design.widget.Snackbar
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.StaggeredGridLayoutManager
+import android.util.Log
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class TelaPrincipal : AppCompatActivity() {
 
@@ -17,11 +22,25 @@ class TelaPrincipal : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tela_principal)
 
-        val recycleView = jogo_recyclerview
-        recycleView.adapter = JogosAdapter(jogos(), this)
+        val context = this
+        val call = RetrofitInit().jogoService().lista()
+        call.enqueue(object: Callback<List<Jogo>> {
+            override fun onFailure(call: Call<List<Jogo>>, t: Throwable) {
+                // print(t)
+            }
 
-        val layoutManager = GridLayoutManager(this, 1)
-        recycleView.layoutManager = layoutManager as RecyclerView.LayoutManager?
+            override fun onResponse(call: Call<List<Jogo>>, response: Response<List<Jogo>>) {
+                response?.body()?.let {
+                    val jogos: List<Jogo> = it
+                    val recycleView = jogo_recyclerview
+                    recycleView.adapter = JogosAdapter(jogos, context)
+
+                    val layoutManager = GridLayoutManager(context, 1)
+                    recycleView.layoutManager = layoutManager as RecyclerView.LayoutManager?
+                }
+            }
+
+        })
 
         fab.setOnClickListener{
             val intent = Intent(this, NovoJogo::class.java);
@@ -30,6 +49,8 @@ class TelaPrincipal : AppCompatActivity() {
     }
 
     private fun jogos(): List<Jogo> {
+
+
         return listOf(
                 Jogo("Street Fighter II", "Da cabeçada!!!", "1"),
                 Jogo("Megaman X", "Dando tiro pra todo lado", "2"),

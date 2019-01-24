@@ -6,8 +6,6 @@ import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.widget.Button
 import android.widget.EditText
-import HttpClient
-import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,8 +16,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        HttpClient.getJogos()
 
         this.button = findViewById<Button>(R.id.btnLogin)
         this.user = findViewById<EditText>(R.id.user)

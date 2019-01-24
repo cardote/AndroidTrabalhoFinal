@@ -4,7 +4,7 @@ import Models.Jogo
 import retrofit2.Call
 import retrofit2.http.GET
 
-interface JogosHttp {
+interface JogoService {
     @GET("/")
-    fun buscarJogos(): Call<Array<Jogo>>
+    fun lista(): Call<List<Jogo>>
 }
