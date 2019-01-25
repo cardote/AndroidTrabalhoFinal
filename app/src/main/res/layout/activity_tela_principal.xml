@@ -18,6 +18,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/jogo_recyclerview"
+            android:layout_alignBottom="@+id/jogo_recyclerview"
+            android:layout_marginTop="165dp"
+            android:layout_marginBottom="278dp"
+            android:padding="10dp"
+            android:visibility="gone" />
+
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"

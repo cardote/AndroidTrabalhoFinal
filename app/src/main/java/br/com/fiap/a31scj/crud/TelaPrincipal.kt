@@ -10,23 +10,30 @@ import android.content.Intent
 import android.support.design.widget.Snackbar
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.StaggeredGridLayoutManager
-import android.util.Log
+import android.view.View
+import android.widget.ProgressBar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class TelaPrincipal : AppCompatActivity() {
 
+    final private lateinit var progress: ProgressBar;
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tela_principal)
 
+        this.progress = findViewById<ProgressBar>(R.id.progressBar)
+        this.progress.visibility = View.VISIBLE
+
         val context = this
+        val loader = this.progress
         val call = RetrofitInit().jogoService().lista()
         call.enqueue(object: Callback<List<Jogo>> {
             override fun onFailure(call: Call<List<Jogo>>, t: Throwable) {
-                // print(t)
+                Snackbar.make(findViewById(android.R.id.content), "Houve um erro ao carregar a lista de jogos!", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show()
             }
 
             override fun onResponse(call: Call<List<Jogo>>, response: Response<List<Jogo>>) {
@@ -37,6 +44,8 @@ class TelaPrincipal : AppCompatActivity() {
 
                     val layoutManager = GridLayoutManager(context, 1)
                     recycleView.layoutManager = layoutManager as RecyclerView.LayoutManager?
+
+                    loader.visibility = View.GONE
                 }
             }
 
@@ -46,15 +55,5 @@ class TelaPrincipal : AppCompatActivity() {
             val intent = Intent(this, NovoJogo::class.java);
             startActivity(intent);
         }
-    }
-
-    private fun jogos(): List<Jogo> {
-
-
-        return listOf(
-                Jogo("Street Fighter II", "Da cabeçada!!!", "1"),
-                Jogo("Megaman X", "Dando tiro pra todo lado", "2"),
-                Jogo("Mortal Kombat III", "Clássico Foda", "3")
-        )
     }
 }
