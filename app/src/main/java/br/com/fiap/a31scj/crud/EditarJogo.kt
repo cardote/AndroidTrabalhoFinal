@@ -6,9 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_editar_jogo.*
-import kotlinx.android.synthetic.main.jogo_layout.*
 import org.json.JSONStringer
 import retrofit2.Call
 import retrofit2.Callback
@@ -43,7 +41,7 @@ class EditarJogo: AppCompatActivity() {
         val descricao = getIntent().getStringExtra("descricao")
         this.id = getIntent().getStringExtra("id")
 
-        this.nome.setText(titulo)
+        this.pass.setText(titulo)
         this.descricao.setText(descricao)
     }
 
@@ -62,7 +60,7 @@ class EditarJogo: AppCompatActivity() {
     }
 
     private fun editar() {
-        var call = RetrofitInit().jogoService().editar(this.id, this.nome.text.toString(), this.descricao.text.toString())
+        var call = RetrofitInit().jogoService().editar(this.id, this.pass.text.toString(), this.descricao.text.toString())
         call.enqueue(object: Callback<JSONStringer> {
             override fun onFailure(call: Call<JSONStringer>, t: Throwable) {
                 Log.d("terminal", t.toString())

@@ -1,23 +1,18 @@
 package br.com.fiap.a31scj.crud
 
 import Config.RetrofitInit
-import android.app.DownloadManager
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.design.widget.TextInputEditText
-import android.support.design.widget.TextInputLayout
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import org.json.JSONStringer
-import org.json.JSONTokener
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.http.POST
 
 class NovoJogo : AppCompatActivity() {
 
@@ -30,7 +25,7 @@ class NovoJogo : AppCompatActivity() {
         setContentView(R.layout.activity_novo_jogo)
 
         this.button = findViewById<Button>(R.id.add)
-        this.titulo = findViewById<EditText>(R.id.nome)
+        this.titulo = findViewById<EditText>(R.id.pass)
         this.descricao = findViewById<TextInputEditText>(R.id.descricao)
 
         this.button.setOnClickListener{
