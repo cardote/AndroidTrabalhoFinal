@@ -9,28 +9,28 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="@dimen/margin_plus"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/jogo_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
+            android:textSize="@dimen/text_size_plus"
             tools:text="Nome" />
 
         <TextView
         android:id="@+id/jogo_descricao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="@dimen/text_size"
         tools:text="Descrição" />
 
         <TextView
             android:id="@+id/jogo_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="10sp"
+            android:textSize="@dimen/text_size"
             android:visibility="invisible"
             tools:text="id" />
 

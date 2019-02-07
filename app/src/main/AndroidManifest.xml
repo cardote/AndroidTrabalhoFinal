@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".SobreActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".SplashScreen"
             android:theme="@style/AppTheme.FullScreen">
@@ -24,7 +25,7 @@
         <activity android:name=".TelaPrincipal" />
         <activity android:name=".NovoJogo" />
         <activity android:name=".EditarJogo" />
-        <activity android:name=".CadastroUsuario"></activity>
+        <activity android:name=".CadastroUsuario" />
     </application>
 
 </manifest>
