@@ -1,6 +1,7 @@
 package br.com.fiap.a31scj.crud
 
 import Config.RetrofitInit
+import Models.Usuario
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +11,7 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import br.com.cardote.fichadetreino.helpers.PreferencesHelper
+import org.json.JSONObject
 import org.json.JSONStringer
 import retrofit2.Call
 import retrofit2.Callback
@@ -65,16 +67,29 @@ class MainActivity : AppCompatActivity() {
         if(user.isNotEmpty() && pass.isNotEmpty()) {
             val call = RetrofitInit().usuarioService().login(user, pass)
 
-            call.enqueue(object: Callback<JSONStringer> {
-                override fun onFailure(call: Call<JSONStringer>, t: Throwable) {
+            call.enqueue(object: Callback<Usuario> {
+                override fun onFailure(call: Call<Usuario>, t: Throwable) {
                     Log.d("Terminal", t.toString())
                     Snackbar.make(findViewById(android.R.id.content), call.toString(), Snackbar.LENGTH_INDEFINITE)
                             .setAction("Action", null).show()
                 }
 
-                override fun onResponse(call: Call<JSONStringer>, response: Response<JSONStringer>) {
-                    // FALTA VERIFICAR O RETORNO E FAZER OQ TEM Q SER FEITO, LOGAR OU FALAR Q TA ERRADO
-                    this@MainActivity.openView(TelaPrincipal())
+                override fun onResponse(call: Call<Usuario>, response: Response<Usuario>) {
+
+                    response?.body()?.let {
+                        val usuario: Usuario = it
+
+
+                        if(usuario.message.equals("usuario não existe")) {
+                            Snackbar.make(findViewById(android.R.id.content), usuario.message, Snackbar.LENGTH_INDEFINITE)
+                                    .setAction("Action", null).show()
+                        } else {
+                            this@MainActivity.openView(TelaPrincipal())
+                        }
+
+
+                    }
+
                 }
 
             })

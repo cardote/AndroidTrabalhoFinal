@@ -1,4 +1,3 @@
 package Models
 
-class Usuario (val username: String,
-               val pass: String)
+class Usuario (val message: String)
